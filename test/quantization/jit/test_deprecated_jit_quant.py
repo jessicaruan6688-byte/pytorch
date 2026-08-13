@@ -3,10 +3,13 @@
 
 import torch
 from torch.testing._internal.common_quantization import skipIfNoFBGEMM
+from torch.testing._internal.common_utils import HardwareClassification
 from torch.testing._internal.jit_utils import JitTestCase
 
 
 class TestDeprecatedJitQuantized(JitTestCase):
+    hw_classification = HardwareClassification.GENERIC
+
     @skipIfNoFBGEMM
     def test_rnn_cell_quantized(self):
         d_in, d_hid = 2, 2
